@@ -1,15 +1,24 @@
-#ddev-generated
 services:
-  nextcloud-fpm:
-    container_name: ddev-${DDEV_SITENAME}-nextcloud-fpm
-    image: ${NEXTCLOUD_FPM_DOCKER_IMAGE:-ddev/ddev-utilities:latest}
-    command: tail -f /dev/null
-    restart: "no"
-    # These labels ensure this service is discoverable by DDEV.
+  nextcloud:
+    container_name: "ddev-${DDEV_SITENAME}-nextcloud"
+    image: ${NEXTCLOUD_DOCKER_IMAGE:-nextcloud:32.0.6-fpm}
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: ${DDEV_APPROOT}
-
+    restart: "no"
+    expose:
+      - "9000"
+    environment: 
+      - MYSQL_DATABASE=db
+      - MYSQL_HOST=db
+      - MYSQL_USER=db
+      - MYSQL_PASSWORD=db
+      - TRUSTED_PROXIES=0.0.0.0/0
+      - NEXTCLOUD_DATA_DIR=/var/www/data
+      - REDIS_HOST=redis
     volumes:
-      - ".:/mnt/ddev_config"
-      - "ddev-global-cache:/mnt/ddev-global-cache"
+      - "nextcloud-data:/var/www/data"
+      - "../web/:/var/www/html:cached"
+volumes:
+  nextcloud-data:
+    name: "${DDEV_SITENAME}-nextcloud-data"

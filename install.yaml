@@ -2,5 +2,10 @@ name: nextcloud-fpm
 
 project_files:
   - docker-compose.nextcloud-fpm.yaml
+  - nextcloud.conf
+  - web-entrypoint.d/nginx-env.sh
 
-ddev_version_constraint: '>= v1.24.3'
+dependencies:
+  - redis
+
+ddev_version_constraint: '>= v1.25.1'
