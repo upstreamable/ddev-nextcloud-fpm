@@ -1,6 +1,7 @@
 name: nextcloud-fpm
 
 project_files:
+  - config.nextcloud.yaml
   - docker-compose.nextcloud-fpm.yaml
   - nextcloud.conf
   - web-entrypoint.d/nginx-env.sh
