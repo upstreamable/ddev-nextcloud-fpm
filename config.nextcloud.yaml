@@ -1,3 +1,5 @@
 override_config: true
 # Only nginx with FPM is supported
 webserver_type: nginx-fpm
+upload_dirs:
+  - "."

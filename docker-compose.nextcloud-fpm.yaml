@@ -2,6 +2,8 @@ services:
   nextcloud:
     container_name: "ddev-${DDEV_SITENAME}-nextcloud"
     image: ${NEXTCLOUD_DOCKER_IMAGE:-nextcloud:32.0.6-fpm}
+    # Change UID and GID of www-data user to behave as the rest of DDEV containers
+    entrypoint: ["/bin/sh", "-c", "usermod -u $DDEV_UID www-data && groupmod -g $DDEV_GID www-data && exec /entrypoint.sh php-fpm"]
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: ${DDEV_APPROOT}
