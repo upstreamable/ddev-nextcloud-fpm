@@ -1,6 +1,7 @@
 name: nextcloud-fpm
 
 project_files:
+  - commands/nextcloud/occ
   - config.nextcloud.yaml
   - docker-compose.nextcloud-fpm.yaml
   - nextcloud.conf

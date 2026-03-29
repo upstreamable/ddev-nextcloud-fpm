@@ -19,6 +19,8 @@ services:
       - NEXTCLOUD_DATA_DIR=/var/www/data
       - REDIS_HOST=redis
     volumes:
+      - ".:/mnt/ddev_config"
+      - "ddev-global-cache:/mnt/ddev-global-cache"
       - "nextcloud-data:/var/www/data"
       - "../web/:/var/www/html:cached"
 volumes:

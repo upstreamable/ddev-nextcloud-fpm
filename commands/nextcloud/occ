@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#ddev-generated
+
+## Description: Run OCC CLI inside the Nextcloud container
+## Usage: occ <command>
+## Example: ddev occ maintenance:repair --include-expensive
+
+runuser -u www-data -- /var/www/html/occ $@
