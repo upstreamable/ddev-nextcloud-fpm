@@ -16,7 +16,7 @@ setup() {
   set -eu -o pipefail
 
   # Override this variable for your add-on:
-  export GITHUB_REPO=rodrigoaguilera/ddev-nextcloud-fpm
+  export GITHUB_REPO=upstreamable/ddev-nextcloud-fpm
 
   TEST_BREW_PREFIX="$(brew --prefix 2>/dev/null || true)"
   export BATS_LIB_PATH="${BATS_LIB_PATH}:${TEST_BREW_PREFIX}/lib:/usr/lib/bats"
@@ -42,9 +42,9 @@ health_checks() {
   # Do something useful here that verifies the add-on
 
   # You can check for specific information in headers:
-  # run curl -sfI https://${PROJNAME}.ddev.site
-  # assert_output --partial "HTTP/2 200"
-  # assert_output --partial "test_header"
+  curl -sfI https://${PROJNAME}.ddev.site
+  assert_output --partial "HTTP/2 200"
+  assert_output --partial "x-robots-tag: noindex, nofollow"
 
   # Or check if some command gives expected output:
   DDEV_DEBUG=true run ddev launch

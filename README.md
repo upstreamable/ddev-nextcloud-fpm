@@ -7,7 +7,7 @@
 
 ## Overview
 
-This add-on integrates Nextcloud Official FPM Docker into your [DDEV](https://ddev.com/) project.
+This add-on integrates Nextcloud Official FPM Docker image into your [DDEV](https://ddev.com/) project.
 
 ## Installation
 
@@ -15,6 +15,13 @@ This add-on integrates Nextcloud Official FPM Docker into your [DDEV](https://dd
 ddev add-on get upstreamable/ddev-nextcloud-fpm
 ddev restart
 ```
+
+Note that the config provided by this addon forces the `webserver_type` to be `nginx-fpm`
+since it is the only configuration supported.
+
+The php version configured is ignored since it will run the recommended php version by the nextcloud
+community shipped in the image. Due to this other development features such as xdebug will not work
+for nextcloud.
 
 ## Usage
 
@@ -28,7 +35,7 @@ ddev restart
 To change the Docker image:
 
 ```bash
-ddev dotenv set .ddev/.env.nextcloud --nextcloud-docker-image="nextcloud:32.0.6-fpm"
+ddev dotenv set .ddev/.env.nextcloud --nextcloud-docker-image="nextcloud:33.0.2-fpm"
 ddev add-on get upstreamable/ddev-nextcloud-fpm
 ddev restart
 ```
@@ -39,7 +46,7 @@ All customization options (use with caution):
 
 | Variable | Flag | Default |
 | -------- | ---- | ------- |
-| `NEXTCLOUD_DOCKER_IMAGE` | `--nextcloud-docker-image` | `nextcloud:32.0.6-fpm"` |
+| `NEXTCLOUD_DOCKER_IMAGE` | `--nextcloud-docker-image` | `nextcloud:33.0.2-fpm"` |
 
 ## Credits
 
