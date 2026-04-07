@@ -42,7 +42,7 @@ health_checks() {
   # Do something useful here that verifies the add-on
 
   # You can check for specific information in headers:
-  curl -sfI https://${PROJNAME}.ddev.site
+  run curl -sfI https://${PROJNAME}.ddev.site
   assert_output --partial "HTTP/2 200"
   assert_output --partial "x-robots-tag: noindex, nofollow"
 
