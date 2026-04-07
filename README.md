@@ -7,7 +7,8 @@
 
 ## Overview
 
-This add-on integrates Nextcloud Official FPM Docker image into your [DDEV](https://ddev.com/) project.
+This add-on integrates [Nextcloud](https://nextcloud.com/)
+Official FPM Docker image into your [DDEV](https://ddev.com/) project.
 
 ## Installation
 
