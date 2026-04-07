@@ -32,7 +32,7 @@ setup() {
   export DDEV_NO_INSTRUMENTATION=true
   ddev delete -Oy "${PROJNAME}" >/dev/null 2>&1 || true
   cd "${TESTDIR}"
-  run ddev config --project-name="${PROJNAME}" --project-tld=ddev.site --type=php --docroot=web
+  run ddev config --project-name="${PROJNAME}" --project-tld=ddev.site --webserver-type=nginx-fpm --docroot=web
   assert_success
   run ddev start -y
   assert_success
